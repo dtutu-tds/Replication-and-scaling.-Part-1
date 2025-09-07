@@ -94,7 +94,7 @@ docker exec -it mysql-slave mysql -u root -prootpassword -e "SHOW SLAVE STATUS\G
 
 ### Скриншоты выполнения работы:
 
-![Скриншот 2 - Master-Slave репликация](скрин2.png)
+![Скриншот 2 - Master-Slave репликация](2.png)
 
 *Скриншот показывает состояние и режимы работы серверов в конфигурации master-slave*
 
@@ -170,11 +170,11 @@ docker exec -it mysql-master2 mysql -u root -prootpassword -e "SHOW MASTER STATU
 
 ### Скриншоты выполнения работы:
 
-![Скриншот 3.1 - Состояние первого сервера Master-Master](скрин3.1.png)
+![Скриншот 3.1 - Состояние первого сервера Master-Master](3.1.png)
 
 *Скриншот показывает состояние mysql-master1 в конфигурации master-master*
 
-![Скриншот 3.2 - Состояние второго сервера Master-Master](скрин3.2.png)
+![Скриншот 3.2 - Состояние второго сервера Master-Master](3.2.png)
 
 *Скриншот показывает состояние mysql-master2 в конфигурации master-master*
 
