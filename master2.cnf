@@ -1,0 +1,24 @@
+[mysqld]
+# Уникальный ID сервера
+server-id = 2
+
+# Включаем бинарный лог
+log-bin = mysql-bin
+binlog-format = ROW
+
+# Настройки для master-master репликации
+auto-increment-increment = 2
+auto-increment-offset = 2
+
+# Базы данных для репликации
+binlog-do-db = testdb
+
+# Настройки репликации
+relay-log = relay-bin
+relay-log-index = relay-bin.index
+
+# Включаем логирование slave обновлений
+log-slave-updates = 1
+
+# Настройки безопасности
+skip-name-resolve = 1

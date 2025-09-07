@@ -1,0 +1,42 @@
+services:
+  mysql-master:
+    image: mysql:8.0
+    container_name: mysql-master
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: testdb
+      MYSQL_USER: replicator
+      MYSQL_PASSWORD: replicatorpassword
+    ports:
+      - "3316:3306"
+    volumes:
+      - ./master.cnf:/etc/mysql/conf.d/master.cnf
+      - master_data:/var/lib/mysql
+    command: --server-id=1 --log-bin=mysql-bin --binlog-do-db=testdb
+    networks:
+      - mysql-network
+
+  mysql-slave:
+    image: mysql:8.0
+    container_name: mysql-slave
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: testdb
+    ports:
+      - "3317:3306"
+    volumes:
+      - ./slave.cnf:/etc/mysql/conf.d/slave.cnf
+      - slave_data:/var/lib/mysql
+    command: --server-id=2 --relay-log=mysql-relay-bin --log-bin=mysql-bin
+    networks:
+      - mysql-network
+    depends_on:
+      - mysql-master
+
+volumes:
+  master_data:
+  slave_data:
+
+networks:
+  mysql-network:
+    driver: bridge

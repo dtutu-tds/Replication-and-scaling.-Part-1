@@ -1,0 +1,19 @@
+[mysqld]
+# Уникальный ID сервера
+server-id = 1
+
+# Включаем бинарный лог
+log-bin = mysql-bin
+
+# Указываем базы данных для репликации
+binlog-do-db = testdb
+
+# Формат бинарного лога
+binlog-format = ROW
+
+# Настройки для репликации
+expire_logs_days = 7
+max_binlog_size = 100M
+
+# Разрешаем подключения
+bind-address = 0.0.0.0

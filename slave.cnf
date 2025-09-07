@@ -1,0 +1,18 @@
+[mysqld]
+# Уникальный ID сервера
+server-id = 2
+
+# Включаем relay log для slave
+relay-log = mysql-relay-bin
+
+# Включаем бинарный лог (для возможного каскадирования)
+log-bin = mysql-bin
+
+# Настройки для репликации
+# read_only и super_read_only будут установлены после настройки репликации
+
+# Разрешаем подключения
+bind-address = 0.0.0.0
+
+# Автоматический запуск репликации
+skip-slave-start = 0
